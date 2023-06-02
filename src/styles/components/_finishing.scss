@@ -1,0 +1,6 @@
+@import "../utils/mixins";
+
+.finishing__container {
+  @include form;
+  @include titles;
+}

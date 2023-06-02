@@ -1,0 +1,74 @@
+@mixin form {
+  font-size: var(--font-size);
+  height: auto;
+  // text-align: initial;
+  padding: 30px 20px;
+  background-color: var(--White);
+  border-radius: 10px;
+  margin-top: -80px;
+}
+
+@mixin titles {
+  .title {
+    color: var(--Marine-blue);
+    font-size: var(--fs-title);
+    margin-bottom: 15px;
+  }
+  .subtitle {
+    color: var(--Cool-gray);
+    font-size: var(--fs-text);
+    font-weight: 400;
+    margin-bottom: 20px;
+  }
+}
+
+@mixin mainButton {
+  .buttons__container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    .button {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      font-size: 2rem;
+      cursor: pointer;
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid var(--Light-gray);
+      background-color: var(--White);
+      &:hover {
+        background-color: var(--Alabaster);
+      }
+      .img__container {
+        width: 50px;
+        height: 50px;
+        img {
+          width: 100%;
+        }
+      }
+      .text__container {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        line-height: 1.5;
+        .text1 {
+          color: var(--Marine-blue);
+          font-weight: 700;
+        }
+        .text2 {
+          color: var(--Cool-gray);
+          font-size: 1.4rem;
+        }
+        .text3 {
+          display: none;
+          font-size: 1.4rem;
+        }
+      }
+    }
+    .text3__container {
+      display: none;
+    }
+  }
+}

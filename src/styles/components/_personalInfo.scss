@@ -1,0 +1,28 @@
+@import "../utils/mixins";
+
+.form {
+  @include form;
+  @include titles;
+  .inputs__container {
+    background-color: var(--White);
+    border-radius: 20px;
+    label {
+      display: block;
+      margin-bottom: 16px;
+      font-size: var(--fs-text);
+      line-height: 1.5;
+    }
+    input {
+      display: block;
+      line-height: 1.5;
+      width: 100%;
+      padding: 6px 12px;
+      color: var(--Cool-gray);
+      font-size: var(--fs-text);
+      &::placeholder {
+        font-weight: 700;
+        color: var(--Cool-gray);
+      }
+    }
+  }
+}
