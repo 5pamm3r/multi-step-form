@@ -1,40 +1,45 @@
-import React, { useContext, useState } from 'react';
+import React from 'react';
 import AddOns from '../AddOns'
-import Footer from '../Footer'
 import Form from '../Form'
 import Header from '../Header'
 import Plans from '../Plans'
 import PersonalInfo from '../personalInfo/PersonalInfo'
-import UserContext from '../../context/userContext';
 import Finishing from '../Finishing';
 
-function App() {
-  const [step, setStep] = useState<number>(1);
-  const {
-    state: { user },
-  } = useContext(UserContext)
-  let render;
+import '../../styles/layout/_app.scss';
+import NavButtons from '../NavButtons';
 
-  if (step === 1) {
-    render = <PersonalInfo />
-  } else if (step === 2) {
-    render = <Plans />
-  } else if (step === 3) {
-    render = <AddOns />
-  } else if (step === 4) {
-    render = <Finishing />
+function App() {
+  const [step, setStep] = React.useState<number>(1);
+
+  const validateFields = (name: string, email: string, phone: string, setError: (error: boolean) => void) => {
+    if (name.trim() === '' || email.trim() === '' || phone.trim() === '') {
+      setError(true);
+      // return false;
+    }
+    setError(false);
+    // return true;
+  };
+
+  const stepComponents: { [key: number]: JSX.Element } = {
+    1: <PersonalInfo validateFields={validateFields} />,
+    2: <Plans />,
+    3: <AddOns />,
+    4: <Finishing />
   }
 
   return (
-    <>
+    <div className='app__container'>
       <Header />
-      <Form>
-        {
-          render
-        }
-      </Form>
-      <Footer step={step} setStep={setStep} />
-    </>
+      <div className='formDesk__container'>
+        <Form>
+          {
+            stepComponents[step]
+          }
+        </Form>
+        <NavButtons step={step} setStep={setStep} />
+      </div>
+    </div>
   )
 }
 
