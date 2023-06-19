@@ -4,23 +4,30 @@
   @include form;
   @include titles;
   @include mainButton;
-  .buttons__container .button {
-    font-size: var(--font-size);
-    .img__container {
-      background-color: var(--Purplish-blue);
-      width: 20px;
-      height: 20px;
-      border-radius: 4px;
-      img {
-        width: 50%;
+  .buttons__container {
+    flex-direction: column;
+    .button {
+      font-size: var(--font-size);
+      flex-direction: row;
+      width: auto;
+      align-items: center;
+      .img__container {
+        background-color: var(--Purplish-blue);
+        width: 20px;
+        height: 20px;
+        border-radius: 4px;
+        img {
+          width: 50%;
+        }
       }
-    }
-    .text3__container {
-      display: flex;
-      margin-left: auto;
-    }
-    :nth-child(3) {
-      justify-content: end;
+      .text3__container {
+        display: flex;
+        margin-left: auto;
+        color: var(--Purplish-blue);
+      }
+      :nth-child(3) {
+        justify-content: end;
+      }
     }
   }
 }

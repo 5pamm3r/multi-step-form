@@ -1,5 +1,18 @@
+@import "../utils/mixins";
+
 .form__container {
   background-color: var(--Magnolia);
   padding: 20px;
   height: 70vh;
+}
+
+@include mq(600px) {
+  .form__container {
+    background-color: var(--White);
+    padding: 0;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 }

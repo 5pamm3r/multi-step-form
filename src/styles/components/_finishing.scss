@@ -3,4 +3,62 @@
 .finishing__container {
   @include form;
   @include titles;
+  .detail__container {
+    padding: 20px;
+    background-color: var(--Alabaster);
+    .detailPlan__container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .planName__container {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        .planName {
+          color: var(--Marine-blue);
+          font-weight: 500;
+          text-transform: capitalize;
+        }
+        a {
+          text-decoration: none;
+          color: var(--Cool-gray);
+        }
+      }
+      .planPrice__container {
+        .planPrice {
+          color: var(--Marine-blue);
+          font-weight: 500;
+        }
+      }
+    }
+    hr {
+      margin: 15px 0;
+    }
+    .detailAddOns__container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      .detailAddOns {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .detailAddOns-name {
+          color: var(--Cool-gray);
+        }
+      }
+    }
+  }
+  .total__container {
+    padding: 0 20px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    .total {
+      color: var(--Cool-gray);
+    }
+    .total-price {
+      color: var(--Purplish-blue);
+      font-weight: 500;
+    }
+  }
 }

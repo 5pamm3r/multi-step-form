@@ -1,14 +1,22 @@
-.footer__container {
+@import "../utils/mixins";
+
+.navButtons__container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
   height: 10vh;
+  button {
+    cursor: pointer;
+  }
   .backBtn {
     font-size: var(--fs-text);
     background-color: transparent;
     border: none;
     color: var(--Cool-gray);
+    &.hidden {
+      opacity: 0;
+    }
   }
   .nextBtn {
     font-size: var(--fs-text);
@@ -18,5 +26,12 @@
     border-radius: 5px;
     color: var(--White);
     border: 1px solid var(--Marine-blue);
+  }
+}
+
+@include mq(600px) {
+  .navButtons__container {
+    padding: 0;
+    height: auto;
   }
 }

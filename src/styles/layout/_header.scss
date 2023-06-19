@@ -1,3 +1,4 @@
+@import "../utils/mixins";
 .header__container {
   background-image: url("../../assets/images/bg-sidebar-mobile.svg");
   height: 20vh;
@@ -8,17 +9,55 @@
     display: flex;
     gap: 20px;
     justify-content: center;
-    padding-top: 30px;
-    div {
+    padding-top: 50px;
+    button {
       width: 30px;
       height: 30px;
-      background-color: var(--Pastel-blue);
+      background-color: transparent;
       border-radius: 100%;
-      button {
-        border: none;
-        background-color: transparent;
-        width: 100%;
-        height: 100%;
+      border: 1px solid var(--Alabaster);
+      color: var(--Alabaster);
+      cursor: pointer;
+    }
+  }
+  .headerInfo__container {
+    display: none;
+  }
+}
+
+@include mq(600px) {
+  .header__container {
+    background-image: url("../../assets/images/bg-sidebar-desktop.svg");
+    width: 280px;
+    height: auto;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    nav {
+      flex-direction: column;
+      padding-left: 12%;
+      gap: 35px;
+    }
+    .headerItem__container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      .headerInfo__container {
+        display: block;
+        display: flex;
+        gap: 2px;
+        font-size: var(--font-size);
+        flex-direction: column;
+        text-transform: uppercase;
+        :nth-child(1) {
+          color: var(--Light-gray);
+          font-size: 1.2rem;
+        }
+        :nth-child(2) {
+          color: var(--Alabaster);
+          font-weight: 500;
+          font-size: 1.3rem;
+        }
       }
     }
   }

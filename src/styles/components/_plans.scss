@@ -3,16 +3,10 @@
 .plans__container {
   @include form;
   @include titles;
-  height: auto;
   @include mainButton;
   .buttons__container .button {
     &.active {
       background-color: var(--Alabaster);
-    }
-    .text__container {
-      .text3 {
-        display: block;
-      }
     }
   }
   .selectedPlans__container {
@@ -31,6 +25,11 @@
       color: var(--Cool-gray);
       font-weight: 700;
       font-size: var(--fs-text);
+      padding: 2px;
+      cursor: pointer;
+      // &:focus {
+      //   outline: 1px solid var(--Purplish-blue);
+      // }
     }
     .monthBtn.left {
       color: var(--Marine-blue);
@@ -39,10 +38,10 @@
       color: var(--Marine-blue);
     }
     .circle__container {
-      width: 30px;
+      width: 35px;
       position: relative;
       background-color: var(--Marine-blue);
-      height: 14px;
+      height: 18px;
       border-radius: 20px;
       .circle {
         position: absolute;
@@ -54,12 +53,26 @@
         background-color: var(--White);
         border-radius: 100%;
         &.left {
-          left: 2px;
+          left: 4px;
         }
         &.right {
-          right: 2px;
+          right: 4px;
         }
       }
+    }
+  }
+}
+
+@include mq(600px) {
+  .plans__container {
+    .title {
+      margin-bottom: 10px;
+    }
+    .subtitle {
+      margin-bottom: 40px;
+    }
+    .selectedPlans__container {
+      height: 50px;
     }
   }
 }

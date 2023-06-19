@@ -1,8 +1,11 @@
 @import "./base/base";
 @import "./utils/variables";
 @import "./utils/mixins";
+@import "./layout/app";
 @import "./layout/header";
 @import "./layout/form";
-@import "./layout/footer";
+@import "./layout/navButtons";
 @import "./components/personalInfo";
 @import "./components/plans";
+@import "./components/addOns";
+@import "./components/finishing";

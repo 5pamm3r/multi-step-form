@@ -1,6 +1,7 @@
 @import "../utils/mixins";
 
 .form {
+  font-size: 1.3rem;
   @include form;
   @include titles;
   .inputs__container {
@@ -16,12 +17,29 @@
       display: block;
       line-height: 1.5;
       width: 100%;
-      padding: 6px 12px;
+      padding: 6px 10px;
       color: var(--Cool-gray);
       font-size: var(--fs-text);
+      border: 1px solid var(--Light-gray);
       &::placeholder {
-        font-weight: 700;
+        font-weight: 600;
         color: var(--Cool-gray);
+      }
+    }
+  }
+}
+
+@include mq(600px) {
+  .form {
+    .inputs__container {
+      label {
+        font-size: 1.6rem;
+        color: var(--Marine-blue);
+        position: relative;
+      }
+      input {
+        font-size: var(--fs-text);
+        border-radius: 8px;
       }
     }
   }

@@ -1,3 +1,5 @@
+@import "../utils/mixins";
+
 * {
   margin: 0;
   padding: 0;
@@ -16,17 +18,26 @@
   --White: hsl(0, 0%, 100%);
   --font-size: 16px;
 
-  --fs-title: 3rem;
-  --fs-text: 2rem;
+  --fs-title: 2.8rem;
+  --fs-subtitle: 1.7rem;
+  --fs-text: 1.6rem;
+
+  --mq-desktop: 600px;
 }
 html {
   font-size: 62.5%;
   font-family: Ubuntu, sans-serif;
 }
 body {
-  // display: grid;
-  // place-items: center;
-  // height: 100vh;
   // font-size: var(--font-size);
   min-width: 375px;
+}
+
+@include mq(600px) {
+  body {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    background-color: var(--Magnolia);
+  }
 }
