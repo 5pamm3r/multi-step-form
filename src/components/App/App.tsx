@@ -3,7 +3,7 @@ import AddOns from '../AddOns'
 import Form from '../Form'
 import Header from '../Header'
 import Plans from '../Plans'
-import PersonalInfo from '../personalInfo/PersonalInfo'
+import PersonalInfo from '../PersonalInfo'
 import Finishing from '../Finishing';
 
 import '../../styles/layout/_app.scss';
