@@ -39,7 +39,7 @@ const AddOns: React.FC = () => {
       <h2 className='title'>Pick Add-ons</h2>
       <h3 className='subtitle'>Add-ons help enhance your gaming experiencie.</h3>
       <div className='buttons__container'>
-        <button id='btn1' className='button' onClick={onChangeAddOns}>
+        <button id='online' className='button' onClick={onChangeAddOns}>
           <div className='img__container'>
             {addOns[0].state && <img src={checkmark} alt='checkmark' />}
           </div>
@@ -51,7 +51,7 @@ const AddOns: React.FC = () => {
             <span className='text3'>+${addOns[0].price}/{addOns[0].plan}</span>
           </div>
         </button>
-        <button id='btn2' className='button' onClick={onChangeAddOns}>
+        <button id='storage' className='button' onClick={onChangeAddOns}>
           <div className='img__container'>
             {addOns[1].state && <img src={checkmark} alt='checkmark' />}
           </div>
@@ -63,7 +63,7 @@ const AddOns: React.FC = () => {
             <span className='text3'>+${addOns[1].price}/{addOns[1].plan}</span>
           </div>
         </button>
-        <button id='btn3' className='button' onClick={onChangeAddOns}>
+        <button id='profile' className='button' onClick={onChangeAddOns}>
           <div className='img__container'>
             {addOns[2].state && <img src={checkmark} alt='checkmark' />}
           </div>
