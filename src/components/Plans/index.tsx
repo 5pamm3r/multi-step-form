@@ -6,33 +6,23 @@ import proImg from '../../assets/images/icon-pro.svg';
 import '../../styles/components/_plans.scss';
 import UserContext from '../../context/userContext';
 
-interface Price {
-  [key: string]: number;
-}
 
 const Plans: React.FC = () => {
   const {
-    state: { planSelected },
-    actions: { setPlanSelected }
+    state: { planSelected, planPrices, addOnsPrices },
+    actions: { setPlanSelected, setAddOns }
   } = useContext(UserContext);
 
 
   const positionStyle = planSelected.plan === 'monthly' ? 'left' : 'right';
-  const prices: Price = planSelected.plan === "monthly" ? {
-    arcade: 9,
-    advanced: 12,
-    pro: 15,
-  } : {
-    arcade: 90,
-    advanced: 120,
-    pro: 150,
-  }
+
+
   const onHandlePlan = (e: React.MouseEvent<HTMLButtonElement>) => {
     const selectedPlan = e.currentTarget.id;
     if (selectedPlan) {
       setPlanSelected({
         name: selectedPlan,
-        price: prices[selectedPlan],
+        price: planPrices[selectedPlan],
         plan: planSelected.plan,
       });
     }
@@ -44,6 +34,12 @@ const Plans: React.FC = () => {
         ...prevState,
         plan: selectedPrice,
       }))
+      setAddOns((prevAddOns) =>
+        prevAddOns.map((addOn) => ({
+          ...addOn,
+          price: addOn.plan === 'monthly' ? addOnsPrices[addOn.id] : addOnsPrices[addOn.id],
+        }))
+      );
     }
   }
 
@@ -58,8 +54,8 @@ const Plans: React.FC = () => {
           </div>
           <div className='text__container'>
             <span className='text1'>Arcade</span>
-            <span className='text2'>{`$${prices.arcade}/${planSelected.plan === 'monthly' ? 'mo' : 'yr'}`}</span>
-            <span className='text3'>2 months free</span>
+            <span className='text2'>{`$${planPrices.arcade}/${planSelected.plan === 'monthly' ? 'mo' : 'yr'}`}</span>
+            {planSelected.plan === 'yearly' && <span className='text3'>2 months free</span>}
           </div>
         </button>
         <button id='advanced' className={`button ${planSelected.name === 'advanced' ? 'active' : ''}`} onClick={onHandlePlan}>
@@ -68,8 +64,8 @@ const Plans: React.FC = () => {
           </div>
           <div className='text__container'>
             <span className='text1'>Advanced</span>
-            <span className='text2'>{`$${prices.advanced}/${planSelected.plan === 'monthly' ? 'mo' : 'yr'}`}</span>
-            <span className='text3'>2 months free</span>
+            <span className='text2'>{`$${planPrices.advanced}/${planSelected.plan === 'monthly' ? 'mo' : 'yr'}`}</span>
+            {planSelected.plan === 'yearly' && <span className='text3'>2 months free</span>}
           </div>
         </button>
         <button id='pro' className={`button ${planSelected.name === 'pro' ? 'active' : ''}`} onClick={onHandlePlan}>
@@ -78,8 +74,8 @@ const Plans: React.FC = () => {
           </div>
           <div className='text__container'>
             <span className='text1'>Pro</span>
-            <span className='text2'>{`$${prices.pro}/${planSelected.plan === 'monthly' ? 'mo' : 'yr'}`}</span>
-            <span className='text3'>2 months free</span>
+            <span className='text2'>{`$${planPrices.pro}/${planSelected.plan === 'monthly' ? 'mo' : 'yr'}`}</span>
+            {planSelected.plan === 'yearly' && <span className='text3'>2 months free</span>}
           </div>
         </button>
       </div>
