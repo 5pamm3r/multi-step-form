@@ -1,17 +1,16 @@
 import React from 'react';
-import { User } from '../types/userType';
 import { Plan } from '../types/planType';
 import { AddOnsType } from '../types/addOnsType';
 
 export interface Context {
   state: {
-    user: User;
     planSelected: Plan;
     addOns: AddOnsType[];
     total: number;
+    planPrices: Price;
+    addOnsPrices: { online: number, storage: number, profile: number };
   }
   actions: {
-    setUser: React.Dispatch<React.SetStateAction<User>>;
     setPlanSelected: React.Dispatch<React.SetStateAction<Plan>>;
     setAddOns: React.Dispatch<React.SetStateAction<AddOnsType[]>>;
     addToTotal: (plan: number, addOns: number) => void;
@@ -23,38 +22,59 @@ const UserContext = React.createContext({} as Context);
 interface Props {
   children: React.ReactNode;
 }
+interface Price {
+  [key: string]: number;
+}
 const UserProvider: React.FC<Props> = ({ children }) => {
-  const [user, setUser] = React.useState<User>({ name: '', email: '', phone: '' })
   const [planSelected, setPlanSelected] = React.useState<Plan>({
     name: '',
     price: 0,
     plan: 'monthly',
   });
+  const planPrices: Price = planSelected.plan === "monthly" ? {
+    arcade: 9,
+    advanced: 12,
+    pro: 15,
+  } : {
+    arcade: 90,
+    advanced: 120,
+    pro: 150,
+  }
+  const addOnsPrices = planSelected.plan === 'monthly' ? {
+    online: 1,
+    storage: 2,
+    profile: 2,
+  } : {
+    online: 10,
+    storage: 20,
+    profile: 20
+  }
 
   const [addOns, setAddOns] = React.useState<AddOnsType[]>([
     {
-      id: 'btn1',
+      id: 'online',
       name: 'Online service',
       description: 'Access to multiplayer games',
-      price: 1,
+      price: addOnsPrices.online,
       plan: planSelected.plan === 'monthly' ? 'mo' : 'yr',
       state: false,
     }, {
-      id: 'btn2',
+      id: 'storage',
       name: 'Larger Storage',
       description: 'Extra 1TB of cloud save',
-      price: 2,
+      price: addOnsPrices.storage,
       plan: planSelected.plan === 'monthly' ? 'mo' : 'yr',
       state: false,
     }, {
-      id: 'btn3',
+      id: 'profile',
       name: 'Customizable profile',
       description: 'Custom theme on your profile',
-      price: 2,
+      price: addOnsPrices.profile,
       plan: planSelected.plan === 'monthly' ? 'mo' : 'yr',
       state: false,
     }
   ])
+
   const [total, setTotal] = React.useState<number>(0);
 
   const addToTotal = (plan: number, addOns: number) => {
@@ -63,14 +83,14 @@ const UserProvider: React.FC<Props> = ({ children }) => {
 
 
   const state: Context['state'] = {
-    user,
     planSelected,
     addOns,
     total,
+    planPrices,
+    addOnsPrices
 
   }
   const actions: Context['actions'] = {
-    setUser,
     setPlanSelected,
     setAddOns,
     addToTotal,
