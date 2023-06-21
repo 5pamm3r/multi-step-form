@@ -1,8 +1,12 @@
 import React from 'react'
+import '../../styles/components/_error.scss';
 
-const Error: React.FC = () => {
+interface Props {
+  message: string;
+}
+const Error: React.FC<Props> = ({ message }) => {
   return (
-    <p style={{ color: 'red' }} > All fields are required.</ p>
+    <span className='errorMessage'> {message}</span>
   )
 }
 
