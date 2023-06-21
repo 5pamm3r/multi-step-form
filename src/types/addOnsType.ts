@@ -1,7 +1,9 @@
 import { Plan } from "./planType";
 
+type AddOnId = 'online' | 'storage' | 'profile';
+
 export interface AddOnsType {
-  id: string;
+  id: AddOnId;
   name: string;
   description: string;
   price: number;
