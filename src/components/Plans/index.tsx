@@ -10,7 +10,7 @@ import Error from '../Error';
 
 const Plans: React.FC = () => {
   const {
-    state: { planSelected, planPrices, addOnsPrices, error },
+    state: { planSelected, planPrices, addOnsPrices, planError },
     actions: { setPlanSelected, setAddOns }
   } = useContext(UserContext);
 
@@ -85,7 +85,7 @@ const Plans: React.FC = () => {
         <div className='circle__container'><div className={`circle ${positionStyle}`}></div></div>
         <button id='yearly' className={`yearBtn ${positionStyle}`} onClick={onChangePrice}>Yearly</button>
       </div>
-      {error && <Error />}
+      {planError.name && <Error message='Select your plan' />}
     </div>
   )
 }
