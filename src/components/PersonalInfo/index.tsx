@@ -6,8 +6,8 @@ import { User } from '../../types/userType';
 
 const PersonalInfo: React.FC = () => {
   const {
-    state: { error, user },
-    actions: { setUser }
+    state: { user, personalError },
+    actions: { setUser, setPersonalError }
   } = React.useContext(UserContext);
 
   const [name, setName] = useState<string>('');
@@ -26,6 +26,10 @@ const PersonalInfo: React.FC = () => {
       ...prevState,
       name: e.target.value,
     }))
+    // setPersonalError((prevState) => ({
+    //   ...prevState,
+    //   name: false
+    // }))
   }
   const onChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -33,6 +37,10 @@ const PersonalInfo: React.FC = () => {
       ...prevState,
       email: e.target.value,
     }))
+    // setPersonalError((prevState) => ({
+    //   ...prevState,
+    //   email: false,
+    // }))
   }
   const onChangePhone = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPhone(e.target.value);
@@ -40,6 +48,10 @@ const PersonalInfo: React.FC = () => {
       ...prevState,
       phone: e.target.value,
     }))
+    // setPersonalError((prevState) => ({
+    //   ...prevState,
+    //   phone: false,
+    // }))
   }
 
   return (
@@ -48,16 +60,18 @@ const PersonalInfo: React.FC = () => {
       <h3 className='subtitle'>Please provide your name, email address and phone number.</h3>
       <div className='inputs__container'>
         <label>Name
-          <input type='text' placeholder='e.g Sthepen King' value={name} onChange={onChangeUsername} autoFocus={true} />
+          {personalError.name && <Error message='This field is required' />}
+          <input className={personalError.name ? 'error' : ''} type='text' placeholder='e.g Sthepen King' value={name} onChange={onChangeUsername} autoFocus={true} />
         </label>
         <label>Email Address
-          <input type='email' placeholder='e.g sthepenking@lorem.com' value={email} onChange={onChangeEmail} />
+          {personalError.email && <Error message='E-mail format is not correct' />}
+          <input className={personalError.email ? 'error' : ''} type='email' placeholder='e.g sthepenking@lorem.com' value={email} onChange={onChangeEmail} />
         </label>
         <label>Phone Number
-          <input type='text' placeholder='e.g +1 234 567 890' value={phone} onChange={onChangePhone} />
+          {personalError.phone && <Error message='This field is required' />}
+          <input className={personalError.phone ? 'error' : ''} type='tel' placeholder='e.g +1 234 567 890' value={phone} onChange={onChangePhone} />
         </label>
       </div>
-      {error && <Error />}
     </div>
   )
 }
