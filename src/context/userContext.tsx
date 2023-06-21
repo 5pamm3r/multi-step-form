@@ -6,7 +6,8 @@ import { User } from '../types/userType';
 export interface Context {
   state: {
     user: User;
-    error: boolean;
+    personalError: PersonalErrorState;
+    planError: PlanError;
     planSelected: Plan;
     addOns: AddOnsType[];
     total: number;
@@ -15,7 +16,8 @@ export interface Context {
   }
   actions: {
     setUser: React.Dispatch<React.SetStateAction<User>>;
-    setError: React.Dispatch<React.SetStateAction<boolean>>;
+    setPersonalError: React.Dispatch<React.SetStateAction<PersonalErrorState>>;
+    setPlanError: React.Dispatch<React.SetStateAction<PlanError>>;
     setPlanSelected: React.Dispatch<React.SetStateAction<Plan>>;
     setAddOns: React.Dispatch<React.SetStateAction<AddOnsType[]>>;
     addToTotal: (plan: number, addOns: number) => void;
@@ -30,9 +32,25 @@ interface Props {
 interface Price {
   [key: string]: number;
 }
+interface PersonalErrorState {
+  name: boolean | undefined;
+  email: boolean | undefined;
+  phone: boolean | undefined;
+}
+interface PlanError {
+  name: boolean | undefined;
+}
 const UserProvider: React.FC<Props> = ({ children }) => {
   const [user, setUser] = useState<User>({ name: '', email: '', phone: '' })
-  const [error, setError] = useState<boolean>(false);
+  const [personalError, setPersonalError] = useState<PersonalErrorState>({
+    name: undefined,
+    email: undefined,
+    phone: undefined,
+  });
+  const [planError, setPlanError] = useState<PlanError>({
+    name: undefined,
+  })
+
 
   const [planSelected, setPlanSelected] = useState<Plan>({
     name: '',
@@ -100,7 +118,8 @@ const UserProvider: React.FC<Props> = ({ children }) => {
 
   const state: Context['state'] = {
     user,
-    error,
+    personalError,
+    planError,
     planSelected,
     addOns,
     total,
@@ -110,7 +129,8 @@ const UserProvider: React.FC<Props> = ({ children }) => {
   }
   const actions: Context['actions'] = {
     setUser,
-    setError,
+    setPersonalError,
+    setPlanError,
     setPlanSelected,
     setAddOns,
     addToTotal,
