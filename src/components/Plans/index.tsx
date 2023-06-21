@@ -5,11 +5,12 @@ import advancedImg from '../../assets/images/icon-advanced.svg';
 import proImg from '../../assets/images/icon-pro.svg';
 import '../../styles/components/_plans.scss';
 import UserContext from '../../context/userContext';
+import Error from '../Error';
 
 
 const Plans: React.FC = () => {
   const {
-    state: { planSelected, planPrices, addOnsPrices },
+    state: { planSelected, planPrices, addOnsPrices, error },
     actions: { setPlanSelected, setAddOns }
   } = useContext(UserContext);
 
@@ -37,7 +38,7 @@ const Plans: React.FC = () => {
       setAddOns((prevAddOns) =>
         prevAddOns.map((addOn) => ({
           ...addOn,
-          price: addOn.plan === 'monthly' ? addOnsPrices[addOn.id] : addOnsPrices[addOn.id],
+          price: addOnsPrices[addOn.id],
         }))
       );
     }
@@ -84,6 +85,7 @@ const Plans: React.FC = () => {
         <div className='circle__container'><div className={`circle ${positionStyle}`}></div></div>
         <button id='yearly' className={`yearBtn ${positionStyle}`} onClick={onChangePrice}>Yearly</button>
       </div>
+      {error && <Error />}
     </div>
   )
 }
