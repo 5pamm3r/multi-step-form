@@ -8,24 +8,26 @@ import Finishing from '../Finishing';
 
 import '../../styles/layout/_app.scss';
 import NavButtons from '../NavButtons';
+import Confirm from '../Confirm';
 
 function App() {
   const [step, setStep] = React.useState<number>(1);
 
-  const validateFields = (name: string, email: string, phone: string, setError: (error: boolean) => void) => {
+  const validatePersonalInfo = (name: string, email: string, phone: string, setError: (error: boolean) => void): boolean => {
     if (name.trim() === '' || email.trim() === '' || phone.trim() === '') {
       setError(true);
-      // return false;
+      return true
     }
     setError(false);
-    // return true;
+    return false
   };
 
   const stepComponents: { [key: number]: JSX.Element } = {
-    1: <PersonalInfo validateFields={validateFields} />,
+    1: <PersonalInfo />,
     2: <Plans />,
     3: <AddOns />,
-    4: <Finishing />
+    4: <Finishing />,
+    5: <Confirm />
   }
 
   return (
@@ -37,7 +39,7 @@ function App() {
             stepComponents[step]
           }
         </Form>
-        <NavButtons step={step} setStep={setStep} />
+        <NavButtons step={step} setStep={setStep} validatePersonalInfo={validatePersonalInfo} />
       </div>
     </div>
   )
