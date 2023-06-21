@@ -8,8 +8,8 @@ const Confirm: React.FC = () => {
       <div className='Img__container'>
         <img src={icon} alt='' />
       </div>
-      <h3 className='Subtitle'>Thank you!</h3>
-      <p className='Text'>Thanks for confirming your subscription! We hope you have fun using our platform. If you ever need support, please feel free to email us at support@loremgaming.com.</p>
+      <h3 className='title'>Thank you!</h3>
+      <p className='subtitle'>Thanks for confirming your subscription! We hope you have fun using our platform. If you ever need support, please feel free to email us at support@loremgaming.com.</p>
     </div>
   )
 }
