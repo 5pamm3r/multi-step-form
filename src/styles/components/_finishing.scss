@@ -13,15 +13,19 @@
       .planName__container {
         display: flex;
         flex-direction: column;
-        gap: 5px;
+        gap: 8px;
         .planName {
           color: var(--Marine-blue);
           font-weight: 500;
           text-transform: capitalize;
         }
-        a {
-          text-decoration: none;
+        .changeBtn {
           color: var(--Cool-gray);
+          border: none;
+          background-color: transparent;
+          cursor: pointer;
+          width: fit-content;
+          text-decoration: underline;
         }
       }
       .planPrice__container {

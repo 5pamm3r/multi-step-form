@@ -1,7 +1,24 @@
+@import "../utils/_mixins.scss";
+
 .Confirm__container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  @include form;
+  .title {
+    margin-top: 30px;
+  }
+  @include titles;
+  padding: 80px 20px;
+  .subtitle {
+    text-align: center;
+    line-height: 1.5;
+  }
+}
+
+@include mq(600px) {
+  .Confirm__container {
+    padding: 80px 30px;
+  }
 }

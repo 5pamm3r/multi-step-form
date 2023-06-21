@@ -11,6 +11,10 @@
       flex-direction: row;
       width: auto;
       align-items: center;
+      &.active {
+        outline: 1px solid var(--Purplish-blue);
+        background-color: var(--Alabaster);
+      }
       .img__container {
         background-color: var(--Purplish-blue);
         width: 20px;

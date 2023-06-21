@@ -12,6 +12,7 @@
       margin-bottom: 16px;
       font-size: var(--fs-text);
       line-height: 1.5;
+      position: relative;
     }
     input {
       display: block;
@@ -25,6 +26,13 @@
         font-weight: 600;
         color: var(--Cool-gray);
       }
+      &.error {
+        outline: 1px solid red;
+      }
+      &:hover,
+      &:focus {
+        outline: 1px solid var(--Purplish-blue);
+      }
     }
   }
 }
@@ -35,7 +43,6 @@
       label {
         font-size: 1.6rem;
         color: var(--Marine-blue);
-        position: relative;
       }
       input {
         font-size: var(--fs-text);

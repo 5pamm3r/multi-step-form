@@ -15,9 +15,14 @@
       height: 30px;
       background-color: transparent;
       border-radius: 100%;
-      border: 1px solid var(--Alabaster);
+      border: 1px solid var(--Pastel-blue);
+      font-weight: bold;
       color: var(--Alabaster);
       cursor: pointer;
+      &.paint {
+        background-color: var(--Pastel-blue);
+        color: black;
+      }
     }
   }
   .headerInfo__container {
