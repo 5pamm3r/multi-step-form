@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Plan } from '../types/planType';
 import { AddOnsType } from '../types/addOnsType';
+import { User } from '../types/userType';
 
 export interface Context {
   state: {
+    user: User;
+    error: boolean;
     planSelected: Plan;
     addOns: AddOnsType[];
     total: number;
@@ -11,6 +14,8 @@ export interface Context {
     addOnsPrices: { online: number, storage: number, profile: number };
   }
   actions: {
+    setUser: React.Dispatch<React.SetStateAction<User>>;
+    setError: React.Dispatch<React.SetStateAction<boolean>>;
     setPlanSelected: React.Dispatch<React.SetStateAction<Plan>>;
     setAddOns: React.Dispatch<React.SetStateAction<AddOnsType[]>>;
     addToTotal: (plan: number, addOns: number) => void;
@@ -26,7 +31,10 @@ interface Price {
   [key: string]: number;
 }
 const UserProvider: React.FC<Props> = ({ children }) => {
-  const [planSelected, setPlanSelected] = React.useState<Plan>({
+  const [user, setUser] = useState<User>({ name: '', email: '', phone: '' })
+  const [error, setError] = useState<boolean>(false);
+
+  const [planSelected, setPlanSelected] = useState<Plan>({
     name: '',
     price: 0,
     plan: 'monthly',
@@ -40,17 +48,25 @@ const UserProvider: React.FC<Props> = ({ children }) => {
     advanced: 120,
     pro: 150,
   }
-  const addOnsPrices = planSelected.plan === 'monthly' ? {
+  const [addOnsPrices, setAddOnsPrices] = useState({
     online: 1,
     storage: 2,
     profile: 2,
-  } : {
-    online: 10,
-    storage: 20,
-    profile: 20
-  }
+  })
 
-  const [addOns, setAddOns] = React.useState<AddOnsType[]>([
+  React.useEffect(() => {
+    planSelected.plan === 'monthly' ? setAddOnsPrices({
+      online: 1,
+      storage: 2,
+      profile: 2,
+    }) : setAddOnsPrices({
+      online: 10,
+      storage: 20,
+      profile: 20
+    })
+  }, [planSelected])
+
+  const [addOns, setAddOns] = useState<AddOnsType[]>([
     {
       id: 'online',
       name: 'Online service',
@@ -75,7 +91,7 @@ const UserProvider: React.FC<Props> = ({ children }) => {
     }
   ])
 
-  const [total, setTotal] = React.useState<number>(0);
+  const [total, setTotal] = useState<number>(0);
 
   const addToTotal = (plan: number, addOns: number) => {
     setTotal(plan + addOns);
@@ -83,6 +99,8 @@ const UserProvider: React.FC<Props> = ({ children }) => {
 
 
   const state: Context['state'] = {
+    user,
+    error,
     planSelected,
     addOns,
     total,
@@ -91,6 +109,8 @@ const UserProvider: React.FC<Props> = ({ children }) => {
 
   }
   const actions: Context['actions'] = {
+    setUser,
+    setError,
     setPlanSelected,
     setAddOns,
     addToTotal,
