@@ -1,16 +1,18 @@
-import React, { useContext } from 'react'
+import React, { SetStateAction, useContext } from 'react'
 import UserContext from '../../context/userContext';
 
 import '../../styles/components/_finishing.scss';
 
-const Finishing: React.FC = () => {
+interface Props {
+  setStep: React.Dispatch<React.SetStateAction<number>>;
+}
+const Finishing: React.FC<Props> = ({ setStep }) => {
   const {
     state: { planSelected, addOns, total },
     actions: { addToTotal }
   } = useContext(UserContext);
 
   React.useEffect(() => {
-
     let count = 0;
     addOns.map(e => {
       if (e.state === true) {
@@ -22,6 +24,9 @@ const Finishing: React.FC = () => {
     addToTotal(planSelected.price, count);
   }, [])
 
+  const onChangePlan = () => {
+    setStep(2)
+  }
   return (
     <div className='finishing__container'>
       <h2 className='title'>Finishing up</h2>
@@ -30,7 +35,7 @@ const Finishing: React.FC = () => {
         <div className='detailPlan__container'>
           <div className='planName__container'>
             <span className='planName'>{planSelected.name} ({planSelected.plan})</span>
-            <a href='#'>Change</a>
+            <button className='changeBtn' onClick={onChangePlan}>Change</button>
           </div>
           <div className='planPrice__container'>
             <span className='planPrice'>${planSelected.price}/{planSelected.plan === 'monthly' ? 'mo' : 'yr'}</span>
