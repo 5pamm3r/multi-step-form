@@ -53,7 +53,7 @@ const NavButtons: React.FC<Props> = ({ step, setStep, validatePersonalInfo, vali
       <div className={`navButtons__container ${hidden ? 'hidden' : ''}`}>
         <button className={`backBtn ${step <= 1 || hidden ? 'hidden' : ''}`} onClick={onBack} disabled={step === 1 || hidden}>Go Back</button>
         {step === 4
-          ? <button className='nextBtn' onClick={onConfirm} disabled={hidden}>Confirm</button>
+          ? <button className='nextBtn confirm' onClick={onConfirm} disabled={hidden}>Confirm</button>
           : <button className={`nextBtn ${hidden ? 'hidden' : ''}`} onClick={onNextStep} disabled={hidden}>Next Step</button>}
       </div>
     </>
