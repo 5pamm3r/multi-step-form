@@ -11,7 +11,8 @@
       display: block;
       margin-bottom: 16px;
       font-size: var(--fs-text);
-      line-height: 1.5;
+      line-height: 2;
+      color: var(--Marine-blue);
       position: relative;
     }
     input {
@@ -19,15 +20,17 @@
       line-height: 1.5;
       width: 100%;
       padding: 6px 10px;
-      color: var(--Cool-gray);
+      color: var(--Marine-blue);
       font-size: var(--fs-text);
       border: 1px solid var(--Light-gray);
+      border-radius: 5px;
+      font-weight: bold;
       &::placeholder {
         font-weight: 600;
         color: var(--Cool-gray);
       }
       &.error {
-        outline: 1px solid red;
+        outline: 1px solid var(--Strawberry-red);
       }
       &:hover,
       &:focus {
@@ -40,10 +43,6 @@
 @include mq(600px) {
   .form {
     .inputs__container {
-      label {
-        font-size: 1.6rem;
-        color: var(--Marine-blue);
-      }
       input {
         font-size: var(--fs-text);
         border-radius: 8px;

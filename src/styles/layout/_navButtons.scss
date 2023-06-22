@@ -14,22 +14,30 @@
     background-color: transparent;
     border: none;
     color: var(--Cool-gray);
+    font-weight: bold;
     &.hidden {
       opacity: 0;
       pointer-events: none;
+    }
+    &:hover {
+      color: var(--Marine-blue);
     }
   }
   .nextBtn {
     font-size: var(--fs-text);
     background-color: var(--Marine-blue);
-    padding: 10px 10px;
+    padding: 10px 20px;
     font-weight: 500;
     border-radius: 5px;
-    color: var(--White);
+    color: var(--Magnolia);
     border: 1px solid var(--Marine-blue);
     &.hidden {
       opacity: 0;
       pointer-events: none;
+    }
+    &.confirm {
+      background-color: var(--Purplish-blue);
+      border: 1px solid var(--Purplish-blue);
     }
   }
   &.hidden {

@@ -11,17 +11,24 @@
       flex-direction: row;
       width: auto;
       align-items: center;
-      &.active {
-        outline: 1px solid var(--Purplish-blue);
-        background-color: var(--Alabaster);
-      }
       .img__container {
-        background-color: var(--Purplish-blue);
+        background-color: var(--White);
+        border: 1px solid var(--Light-gray);
         width: 20px;
         height: 20px;
         border-radius: 4px;
-        img {
-          width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      &.active {
+        outline: 1px solid var(--Purplish-blue);
+        background-color: var(--Alabaster);
+        .img__container {
+          background-color: var(--Purplish-blue);
+          img {
+            padding: 4px;
+          }
         }
       }
       .text3__container {

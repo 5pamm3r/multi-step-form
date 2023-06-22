@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Ubuntu, sans-serif;
 }
 :root {
   --Marine-blue: hsl(213, 96%, 18%);
@@ -19,8 +20,8 @@
   --font-size: 16px;
 
   --fs-title: 2.8rem;
-  --fs-subtitle: 1.7rem;
-  --fs-text: 1.6rem;
+  --fs-subtitle: 1.6rem;
+  --fs-text: 1.5rem;
 
   --mq-desktop: 600px;
 }
