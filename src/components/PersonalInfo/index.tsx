@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import '../../styles/components/_personalInfo.scss'
 import Error from '../Error';
 import UserContext from '../../context/userContext';
@@ -7,7 +7,7 @@ import { User } from '../../types/userType';
 const PersonalInfo: React.FC = () => {
   const {
     state: { user, personalError },
-    actions: { setUser, setPersonalError }
+    actions: { setUser }
   } = React.useContext(UserContext);
 
   const [name, setName] = useState<string>('');

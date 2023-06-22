@@ -1,4 +1,4 @@
-import React, { SetStateAction, useContext } from 'react'
+import React, { useContext } from 'react'
 import UserContext from '../../context/userContext';
 
 import '../../styles/components/_finishing.scss';

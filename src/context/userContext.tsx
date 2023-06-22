@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Plan } from '../types/planType';
 import { AddOnsType } from '../types/addOnsType';
 import { User } from '../types/userType';
