@@ -88,7 +88,7 @@ function App() {
 
   return (
     <div className='app__container'>
-      <Header step={step} />
+      <Header step={step} setStep={setStep} />
       <div className='formDesk__container'>
         <Form>
           {
