@@ -6,7 +6,7 @@ interface Props {
 }
 const Error: React.FC<Props> = ({ message }) => {
   return (
-    <span className='errorMessage'> {message}</span>
+    <span className='errorMessage' role='alert' aria-live='assertive'> {message}</span>
   )
 }
 
