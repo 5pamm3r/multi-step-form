@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../../styles/components/_personalInfo.scss'
 import Error from '../Error';
 import UserContext from '../../context/userContext';
@@ -14,7 +14,7 @@ const PersonalInfo: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [phone, setPhone] = useState<string>('');
 
-  React.useEffect(() => {
+  useEffect(() => {
     setName(user.name);
     setEmail(user.email);
     setPhone(user.phone)
@@ -55,21 +55,22 @@ const PersonalInfo: React.FC = () => {
   }
 
   return (
-    <div className='form'>
+    <div className='form' aria-labelledby='personalInfo'>
+      <h2 className='offscreen' id='personalInfo'>Personal information section</h2>
       <h2 className='title'>Personal Info</h2>
       <h3 className='subtitle'>Please provide your name, email address and phone number.</h3>
       <div className='inputs__container'>
-        <label>Name
+        <label><span className='offscreen'>Type your</span>Name
           {personalError.name && <Error message='This field is required' />}
-          <input className={personalError.name ? 'error' : ''} type='text' placeholder='e.g Sthepen King' value={name} onChange={onChangeUsername} autoFocus={true} />
+          <input className={personalError.name ? 'error' : ''} type='text' placeholder='e.g Sthepen King' value={name} onChange={onChangeUsername} />
         </label>
-        <label>Email Address
+        <label><span className='offscreen'>Type you</span>Email Address
           {personalError.email && <Error message='E-mail format is not correct' />}
           <input className={personalError.email ? 'error' : ''} type='email' placeholder='e.g sthepenking@lorem.com' value={email} onChange={onChangeEmail} />
         </label>
-        <label>Phone Number
+        <label><span className='offscreen'>Type your</span>Phone Number
           {personalError.phone && <Error message='This field is required' />}
-          <input className={personalError.phone ? 'error' : ''} type='tel' placeholder='e.g +1 234 567 890' value={phone} onChange={onChangePhone} />
+          <input className={personalError.phone ? 'error' : ''} type='tel' min="00000" placeholder='e.g +1 234 567 890' value={phone} onChange={onChangePhone} />
         </label>
       </div>
     </div>
