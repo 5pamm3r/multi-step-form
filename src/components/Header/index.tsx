@@ -1,7 +1,5 @@
-import React, { useContext } from "react";
+import React from "react";
 import "../../styles/layout/_header.scss";
-import UserContext from '../../context/userContext';
-import { User } from "../../types/userType";
 
 interface Props {
   step: number;
