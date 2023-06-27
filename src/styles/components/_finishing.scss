@@ -1,68 +1,35 @@
-@import "../utils/mixins";
+@import "../utils/_mixins.scss";
 
 .finishing__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   @include form;
+  .title {
+    margin-top: 30px;
+  }
   @include titles;
-  .detail__container {
-    padding: 20px;
-    background-color: var(--Alabaster);
-    .detailPlan__container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      .planName__container {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        .planName {
-          color: var(--Marine-blue);
-          font-weight: 500;
-          text-transform: capitalize;
-        }
-        .changeBtn {
-          color: var(--Cool-gray);
-          border: none;
-          background-color: transparent;
-          cursor: pointer;
-          width: fit-content;
-          text-decoration: underline;
-        }
-      }
-      .planPrice__container {
-        .planPrice {
-          color: var(--Marine-blue);
-          font-weight: 500;
-        }
-      }
-    }
-    hr {
-      margin: 15px 0;
-    }
-    .detailAddOns__container {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      .detailAddOns {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        .detailAddOns-name {
-          color: var(--Cool-gray);
-        }
-      }
+  padding: 80px 20px;
+  .subtitle {
+    text-align: center;
+    line-height: 1.5;
+  }
+  .img__container {
+    width: 80px;
+    height: 80px;
+    img {
+      width: 100%;
     }
   }
-  .total__container {
-    padding: 0 20px;
-    margin-top: 30px;
-    display: flex;
-    justify-content: space-between;
-    .total {
-      color: var(--Cool-gray);
-    }
-    .total-price {
-      color: var(--Purplish-blue);
-      font-weight: bold;
-    }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+@include mq(600px) {
+  .finishing__container {
+    padding: 80px 20px;
   }
 }

@@ -4,11 +4,11 @@ import Form from '../Form'
 import Header from '../Header'
 import Plans from '../Plans'
 import PersonalInfo from '../PersonalInfo'
-import Finishing from '../Finishing';
+import Finishing from '../Confirm';
 
 import '../../styles/layout/_app.scss';
 import NavButtons from '../NavButtons';
-import Confirm from '../Confirm';
+import Confirm from '../Finishing';
 import { Plan } from '../../types/planType';
 import UserContext from '../../context/userContext';
 import { User } from '../../types/userType';
@@ -88,7 +88,7 @@ function App() {
 
   return (
     <div className='app__container'>
-      <Header step={step} setStep={setStep} />
+      <Header step={step} />
       <div className='formDesk__container'>
         <Form>
           {
